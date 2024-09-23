@@ -1,3 +1,4 @@
+import 'package:dart_rss/domain/careportal_code/careportal_core.dart';
 import 'package:dart_rss/domain/dublin_core/dublin_core.dart';
 import 'package:dart_rss/domain/media/media.dart';
 import 'package:dart_rss/domain/rss_category.dart';
@@ -28,6 +29,7 @@ class RssItem {
       dc: DublinCore.parse(element),
       itunes: RssItemItunes.parse(element),
       podcastIndex: RssItemPodcastIndex.parse(element),
+      carePortal: CarePortal.parse(element),
     );
   }
 
@@ -47,6 +49,7 @@ class RssItem {
     this.dc,
     this.itunes,
     this.podcastIndex,
+    this.carePortal,
   });
 
   final String? title;
@@ -65,6 +68,7 @@ class RssItem {
   final DublinCore? dc;
   final RssItemItunes? itunes;
   final RssItemPodcastIndex? podcastIndex;
+  final CarePortal? carePortal;
 
   RssItem copyWith({
     String? title,
@@ -82,6 +86,7 @@ class RssItem {
     DublinCore? dc,
     RssItemItunes? itunes,
     RssItemPodcastIndex? podcastIndex,
+    CarePortal? carePortal,
   }) {
     return RssItem(
       title: title ?? this.title,
@@ -99,6 +104,7 @@ class RssItem {
       dc: dc ?? this.dc,
       itunes: itunes ?? this.itunes,
       podcastIndex: podcastIndex ?? this.podcastIndex,
+      carePortal:carePortal??this.carePortal,
     );
   }
 
