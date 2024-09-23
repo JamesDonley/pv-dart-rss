@@ -11,6 +11,7 @@ class CarePortal {
       purpose: findElementOrNull(element, 'careportal:purpose')?.innerText,
       agency_name: findElementOrNull(element, 'careportal:agency_name')?.innerText,
       county: findElementOrNull(element, 'careportal:county')?.innerText,
+      urgency_as_string: findElementOrNull(element, 'careportal:urgency_as_string')?.innerText,
     );
   }
 
@@ -22,6 +23,7 @@ class CarePortal {
     this.purpose,
     this.agency_name,
     this.county,
+    this.urgency_as_string,
   });
 
   final String? id;
@@ -31,4 +33,5 @@ class CarePortal {
   final String? purpose;
   final String? agency_name;
   final String? county;
+  final String? urgency_as_string;
 }
