@@ -7,6 +7,10 @@ class CarePortal {
       id: findElementOrNull(element, 'careportal:id')?.innerText,
       state: findElementOrNull(element, 'careportal:state')?.innerText,
       zip_code: findElementOrNull(element, 'careportal:zip_code')?.innerText,
+      status: findElementOrNull(element, 'careportal:status')?.innerText,
+      purpose: findElementOrNull(element, 'careportal:purpose')?.innerText,
+      agency_name: findElementOrNull(element, 'careportal:agency_name')?.innerText,
+      county: findElementOrNull(element, 'careportal:county')?.innerText,
     );
   }
 
@@ -14,9 +18,17 @@ class CarePortal {
     this.id,
     this.state,
     this.zip_code,
+    this.status,
+    this.purpose,
+    this.agency_name,
+    this.county,
   });
 
   final String? id;
   final String? state;
   final String? zip_code;
+  final String? status;
+  final String? purpose;
+  final String? agency_name;
+  final String? county;
 }
