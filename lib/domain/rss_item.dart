@@ -13,7 +13,7 @@ import 'package:xml/xml.dart';
 import 'package:dart_rss/domain/rss_item_itunes.dart';
 
 class RssItem {
-  factory RssItem.parse(XmlElement element) {
+  factory RssItem.parse(XmlElement element,String? atom) {
     return RssItem(
       title: findElementOrNull(element, 'title')?.innerText,
       description: findElementOrNull(element, 'description')?.innerText,
@@ -31,10 +31,12 @@ class RssItem {
       itunes: RssItemItunes.parse(element),
       podcastIndex: RssItemPodcastIndex.parse(element),
       carePortal: CarePortal.parse(element),
+      automHref: atom,
     );
   }
 
   const RssItem({
+    this.automHref,
     this.title,
     this.description,
     this.link,
@@ -53,6 +55,7 @@ class RssItem {
     this.carePortal,
   });
 
+  final String? automHref;
   final String? title;
   final String? description;
   final String? link;
