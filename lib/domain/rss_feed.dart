@@ -6,6 +6,7 @@ import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_cloud.dart';
 import 'package:dart_rss/domain/rss_image.dart';
 import 'package:dart_rss/domain/rss_item.dart';
+import 'package:dart_rss/domain/rss_itunes_image.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
 
@@ -55,6 +56,7 @@ class RssFeed {
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
       podcastIndex: RssPodcastIndex.parse(channelElement),
+      atomHref: RssItunesImage.parse(findElementOrNull(channelElement, 'itunes:image'))?.href
     );
   }
 
@@ -82,6 +84,7 @@ class RssFeed {
     this.dc,
     this.itunes,
     this.podcastIndex,
+    this.atomHref
   });
 
   final String? title;
@@ -135,6 +138,7 @@ class RssFeed {
   //       introduced to hold podcast extensions, even though some/all of those extensions are
   //       supposed to be able to apply directly to a channel.
   final RssPodcastIndex? podcastIndex;
+  final String? atomHref;
 
   XmlDocument toXmlDocument() {
     final builder = XmlBuilder();

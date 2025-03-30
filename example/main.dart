@@ -11,7 +11,7 @@ void main() {
     final channel = RssFeed.parse(bodyString);
     channel.items.forEach((element) {
       print(element.carePortal?.zip_code);
-      print(element.baseUrl);
+      print(channel.atomHref);
     });
     return channel;
   });
