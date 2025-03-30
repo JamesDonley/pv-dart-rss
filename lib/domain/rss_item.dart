@@ -5,6 +5,7 @@ import 'package:dart_rss/domain/rss_category.dart';
 import 'package:dart_rss/domain/rss_content.dart';
 import 'package:dart_rss/domain/rss_enclosure.dart';
 import 'package:dart_rss/domain/rss_item_podcast_index.dart';
+import 'package:dart_rss/domain/rss_itunes_image.dart';
 import 'package:dart_rss/domain/rss_source.dart';
 import 'package:dart_rss/util/helpers.dart';
 import 'package:xml/xml.dart';
@@ -30,6 +31,7 @@ class RssItem {
       itunes: RssItemItunes.parse(element),
       podcastIndex: RssItemPodcastIndex.parse(element),
       carePortal: CarePortal.parse(element),
+      baseUrl: RssItunesImage.parse(findElementOrNull(element, 'atom:link'))?.href
     );
   }
 
@@ -50,6 +52,7 @@ class RssItem {
     this.itunes,
     this.podcastIndex,
     this.carePortal,
+    this.baseUrl
   });
 
   final String? title;
@@ -69,6 +72,7 @@ class RssItem {
   final RssItemItunes? itunes;
   final RssItemPodcastIndex? podcastIndex;
   final CarePortal? carePortal;
+  final String? baseUrl;
 
   RssItem copyWith({
     String? title,
@@ -87,6 +91,7 @@ class RssItem {
     RssItemItunes? itunes,
     RssItemPodcastIndex? podcastIndex,
     CarePortal? carePortal,
+    String? baseUrl
   }) {
     return RssItem(
       title: title ?? this.title,
@@ -105,6 +110,7 @@ class RssItem {
       itunes: itunes ?? this.itunes,
       podcastIndex: podcastIndex ?? this.podcastIndex,
       carePortal:carePortal??this.carePortal,
+      baseUrl:baseUrl??this.baseUrl
     );
   }
 
