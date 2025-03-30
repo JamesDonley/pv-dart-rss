@@ -27,7 +27,7 @@ class RssFeed {
       author: findElementOrNull(channelElement, 'author')?.innerText,
       description: findElementOrNull(channelElement, 'description')?.innerText,
       link: findElementOrNull(channelElement, 'link')?.innerText,
-      items: channelElement.findElements('item').map((element) => RssItem.parse(element,RssItunesImage.parse(findElementOrNull(channelElement, 'atom:link'))?.href)).toList(),
+      items: channelElement.findElements('item').map((element) => RssItem.parse(element)).toList(),
       image: RssImage.parse(findElementOrNull(channelElement, 'image')),
       cloud: RssCloud.parse(findElementOrNull(channelElement, 'cloud')),
       categories: channelElement.findElements('category').map((element) => RssCategory.parse(element)).toList(),
