@@ -56,7 +56,7 @@ class RssFeed {
       dc: DublinCore.parse(channelElement),
       itunes: RssItunes.parse(channelElement),
       podcastIndex: RssPodcastIndex.parse(channelElement),
-      atomHref: RssItunesImage.parse(findElementOrNull(channelElement, 'itunes:image'))?.href
+      atomHref: RssItunesImage.parse(findElementOrNull(channelElement, 'atom:link'))?.href
     );
   }
 
